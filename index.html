@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERPNext</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio website">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --max-width: 1100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 5rem auto;
+            max-width: 800px;
+        }
+
+        .description p {
+            margin-bottom: 1rem;
+        }
+
+        .cta {
+            padding: 10px;
+            background-color: var(--primary);
+            border-left: 4px solid #FFD700;
+            color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        }
+
+        .cta a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        .workflow,
+        .technologies,
+        .challenges,
+        .outcomes {
+            margin: 40px 0;
+            background-color: #f9f9f9; 
+            font-family: Arial, sans-serif;
+        }
+
+        .workflow h2,
+        .technologies h2,
+        .challenges h2,
+        .outcomes h2 {
+            font-size: 1.6em;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: inline-flex;
+            gap: 10px;
+        }
+
+        .workflow h2 > svg,
+        .technologies h2 > svg,
+        .challenges h2 > svg,
+        .outcomes h2 > svg {
+            width: 30px;
+        }
+
+        .workflow p, 
+        .technologies p {
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .technologies ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .technologies ul li {
+            margin-bottom: 6px;
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.5;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .technologies ul li:hover {
+            transform: translateX(3px);
+            color: var(--primary);
+        }
+
+        .challenges ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .challenges ul li {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.5;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .challenges ul li:hover {
+            transform: translateX(3px);
+            color: var(--primary);
+        }
+       
+        .members {
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+        }
+
+        .member {
+            position: relative; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .member::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            background: var(--dark);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .member:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .member img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .roles {
+            margin: 3rem auto;
+            max-width: var(--max-width);
+        }
+
+        .roles h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .roles table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .roles th, .roles td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.9rem;  
+        }
+
+        .roles th {
+            background: var(--light);
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .roles tr:hover {
+            background: #f1f5f9;
+        }
+
+        .roles td ul {
+            list-style: none;        
+            padding: 0;              
+            margin: 0;               
+        }
+
+        .roles td ul li {
+            margin-bottom: 0.25rem;  
+            line-height: 1.4;      
+        }
+
+        .roles td ul li:last-child {
+            margin-bottom: 0;       
+        }
+
+        .outcomes ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .outcomes ul li {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.5;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .outcomes ul li:hover {
+            transform: translateX(3px);
+            color: var(--primary);
+        }
+
+        .footer {
+            margin: 60px 0 20px 0; 
+            padding: 20px;
+            background-color: #e5e7eb; 
+            text-align: left;
+            font-size: 0.95em;
+            color: #374151; 
+            line-height: 1.5;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer p {
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="description">
+            <p>
+                This college project ran from early February to March 26th. We were tasked with installing and configuring an ERPNext system on a server according to our client’s requirements, specifically the education module, and producing comprehensive documentation.
+            </p>
+
+            <div class="cta">
+                <a href="https://erpnext-1.gitbook.io/erpnext-docs">View Full Documentation</a>
+            </div>
+        </section>
+
+        <section class="workflow">
+            <h2>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><circle class="a" cx="12" cy="6" r="3"></circle><rect class="a" height="5" rx="2" width="8" x="2" y="16"></rect><rect class="a" height="5" rx="2" width="8" x="14" y="16"></rect><path class="a" d="M6,16V14a2,2,0,0,1,2-2h8a2,2,0,0,1,2,2v2"></path><line class="a" x1="12" x2="12" y1="9" y2="12"></line></g></svg>
+                Project Workflow
+            </h2>
+            <p>
+                Our team followed a weekly meeting schedule to discuss progress, review completed tasks, and plan upcoming work. Attendance was crucial to ensure effective coordination and timely completion of project milestones.
+            </p>
+        </section>
+
+        <section class="technologies">
+            <h2>
+                <svg viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M873.363 924.731c-0.039 40.905-33.184 74.053-74.083 74.099h-574.519c-40.91-0.039-74.065-33.19-74.111-74.096 0-3.965 0.734-7.904 2.144-11.609l198.996-521.504c0.069-0.827 0.187-1.654 0.291-2.47v-298.833h-23.511c-18.001 0-32.564-14.587-32.564-32.576s14.563-32.576 32.564-32.576h56.076c0.003 0 0.007 0 0.012 0 17.99 0 32.576 14.586 32.576 32.576 0 0 0 0 0 0v333.925c0 1.876-0.163 3.728-0.478 5.581 0 3.973-0.956 9.321-2.388 13.014l-119.863 314.118h432.199l-123.837-313.769c-1.401-3.431-2.233-7.411-2.275-11.581l-0.241-0.957c-0.133-1.155-0.209-2.493-0.209-3.847v-336.484c0-0.003 0-0.007 0-0.012 0-17.985 14.579-32.564 32.564-32.564 0 0 0 0 0 0h57.543c18.001 0 32.564 14.587 32.564 32.576s-14.563 32.576-32.564 32.576h-24.991v300.976l205.824 521.469c1.503 3.822 2.284 7.865 2.284 11.965zM448.899 651.798c0.42-13.171 11.197-23.689 24.432-23.689s24.013 10.517 24.43 23.651c0.001 13.495-10.962 24.47-24.443 24.47s-24.42-10.975-24.42-24.432zM465.164 651.798c-0.003 0.086-0.005 0.188-0.005 0.29 0 4.505 3.651 8.156 8.156 8.156 4.505 0 8.156-3.651 8.156-8.156 0-0.115-0.002-0.228-0.006-0.341-0.178-4.347-3.759-7.814-8.148-7.814-4.402 0-7.989 3.487-8.15 7.851zM575.101 627.366c0-0.003 0-0.007 0-0.012 0-13.5 10.943-24.444 24.444-24.444 13.5 0 24.444 10.943 24.444 24.444 0 13.5-10.943 24.444-24.444 24.444-13.49-0.014-24.423-10.942-24.444-24.43zM591.389 627.366c-0.003 0.086-0.005 0.188-0.005 0.29 0 4.505 3.651 8.156 8.156 8.156 4.505 0 8.156-3.651 8.156-8.156 0-0.115-0.002-0.228-0.006-0.341-0.178-4.347-3.759-7.814-8.148-7.814-4.402 0-7.989 3.487-8.15 7.851zM507.223 545.939c0.027-18.737 15.212-33.919 33.949-33.939 18.733 0.027 33.909 15.207 33.93 33.936-0.027 18.732-15.2 33.908-33.924 33.941-18.743-0.014-33.934-15.199-33.953-33.936zM523.51 545.939c0 9.728 7.922 17.651 17.663 17.651 9.716 0 17.663-7.922 17.663-17.651 0-9.741-7.947-17.663-17.663-17.663-9.741 0-17.663 7.922-17.663 17.663z"></path></g></svg>
+                Technologies Used
+            </h2>
+            <p>For this project, we leveraged the following tools and platforms:</p>
+            <ul>
+                <li>Linux server (rented from IONOS, Spain)</li>
+                <li>Ubuntu</li>
+                <li>ERPNext (Education module)</li>
+                <li>Docker</li>
+                <li>GitBook for documentation</li>
+            </ul>
+        </section>
+
+        <section class="challenges">
+            <h2>
+                <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M47.6,20.1c-9.8,1.1-17.7,8.8-18.5,18.4c-0.6,7,2.5,13.4,7.5,17.5c1.5,1.2,2.4,3,2.4,4.9v0.1 c0,2.8,2.3,5.1,5.2,5.1h11.6c2.9,0,5.2-2.3,5.2-5.1v-0.1c0-1.9,0.9-3.7,2.4-4.9C68,52.2,71,46.6,71,40.3 C71,28.3,60.3,18.8,47.6,20.1z"></path> </g> <g> <path d="M59,72H41c-1.1,0-2,0.9-2,2c0,3.3,2.7,6,6,6h10c3.3,0,6-2.7,6-6C61,72.9,60.1,72,59,72z"></path> </g> </g> </g></svg>
+                Challenges & Solutions
+            </h2>
+            <ul>
+                <li>
+                    The initial ERPNext installation on the server was challenging due to the manual setup process. We successfully overcame this by using Docker on our second attempt, which simplified deployment and configuration.
+                </li>
+                <li>
+                    Team members were initially unfamiliar with ERPNext and its Doctype system. Through collaborative learning and hands-on practice, we quickly adapted and became proficient in configuring modules effectively.
+                </li>
+            </ul>
+        </section>
+
+        <section class="roles">
+            <h2>Team Roles</h2>
+            <p style="margin-bottom: 20px;">
+                Responsibilities were divided into three main groups: Technical, Documentation, and HR/Oversight. We coordinated closely to complete the assignment successfully.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Member(s)</th>
+                        <th>Responsibilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Liaison</td>
+                        <td>Min Thiha Tun</td>
+                        <td>Serves as the point of contact between the team and the professor, managing communications and coordinating updates</td>
+                    </tr>
+                    <tr>
+                        <td>Technical</td>
+                        <td>Min Thiha Tun, Naung Naung Lin, Thit Htun Aung, Khant Naing Htun, Lin Lett Htun, Zwe Myat Tun</td>
+                        <td>Responsible for installing ERPNext, setting up the server, and configuring modules according to requirements</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>Shin Thu Nwe, Pyae Pyae Min San, Kaung Sithu Htun, Khant Zay Yan, Arkar Moe Myint, Lin Lett Htun, Thar Linn Htet, Min Thiha Tun</td>
+                        <td>Prepares user manuals and maintains comprehensive project documentation</td>
+                    </tr>
+                    <tr>
+                        <td>HR / Oversight</td>
+                        <td>Pyae Pyae Min San, Saung Wai Hnin Htet, Lwin Min Thein, Shin Min Eain</td>
+                        <td>Coordinates team activities, tracks project progress, and reports updates to the client</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="members">
+            <div class="member" data-name="Min Thiha Tun">
+                <a href="https://github.com/mthtclone" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/157962042?v=4" alt="Min Thiha Tun">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Zwe Myat Tun">
+                <a href="https://www.instagram.com/king_zan_xxvi?utm_source=qr" target="_blank">
+                    <img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/606132035_18118135897573893_5792222495770083754_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby44MjguYzIifQ&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2QHV9MN1HOS0l8SISTw6WxKcvI1QNFuuuD0yYYf7A0FzX2UqXREGfvto5wJuW0oik-A&_nc_ohc=C1sOAkPW2IcQ7kNvwHdB4QR&_nc_gid=TqId_0tZh9ftrUy1_pGAPQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AftxNLV0REObomJf3FRIwrr2O9ijmlu5yLT7q-x582F6wg&oe=69A73445&_nc_sid=8b3546" alt="Zwe Myat Htun">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Naung Naung Lin">
+                <a href="https://github.com/Janica-Max" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/218932649?v=4" alt="Naung Naung Lin">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Shin Thu Nwe">
+                <a href="mailto:shinthunwe@gmail.com" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/170590433?v=4" alt="Shin Thu Nwe">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Pyae Pyae Min San">
+                <a href="mailto:pyaepyaeminsan@gmail.com" target="_blank">
+                    <img src="https://avatars.githubusercontent.com/u/245637052?v=4" alt="Pyae Pyae Min San">
+                </a>
+            </div>
+
+            <div class="member" data-name="Thit Htun Aung">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Thit Htun Aung">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Khant Naing Htun">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Khant Naing Htun">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Lin Lett Htun">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Lin Lett Htun">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Arkar Moe Myint">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Arkar Moe Myint">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Kaung Sithu Htun">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Kaung Sithu Htun">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Thar Linn Htet">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Thar Linn Htet">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Lwin Min Thein">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Lwin Min Thein">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Saung Wai Hnin Htet">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Saung Wai Hnin Htet">
+                </a>
+            </div>
+            
+            <div class="member" data-name="Shin Min Eain">
+                <a href="#" target="_blank">
+                    <img src="user.png" alt="Shin Min Eain">
+                </a>
+            </div>
+            
+        </section>
+
+        <section class="outcomes">
+            <h2>
+                <svg fill="#000000" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M940.253 101.053c158.147 0 314.173 42.644 451.301 123.284l-82.156 139.351C1197.23 297.6 1069.5 262.737 940.253 262.737c-401.179 0-727.579 326.4-727.579 727.579s326.4 727.579 727.58 727.579c401.178 0 727.578-326.4 727.578-727.58 0-129.246-34.964-256.976-101.053-369.246l139.352-82.054c80.741 137.128 123.385 293.254 123.385 451.3 0 490.308-398.956 889.264-889.263 889.264-490.408 0-889.263-398.956-889.263-889.263 0-490.409 398.855-889.263 889.263-889.263Zm.01 303.137v161.685c-234.038 0-424.42 190.383-424.42 424.42 0 234.038 190.382 424.422 424.42 424.422 233.937 0 424.421-190.384 424.421-424.421h161.684c0 323.166-262.939 586.105-586.105 586.105s-586.105-262.94-586.105-586.105c0-323.167 262.939-586.106 586.105-586.106Zm-.02 303.138v161.684c-66.897 0-121.263 54.468-121.263 121.263 0 66.897 54.366 121.264 121.263 121.264s121.263-54.367 121.263-121.264h161.684c0 156.026-126.922 282.948-282.947 282.948S657.296 1146.3 657.296 990.275c0-156.025 126.922-282.947 282.947-282.947Zm736.825-597.05 142.99 142.99-426.341 426.24 186.543 186.543h-515.773V350.28l186.341 186.34 426.24-426.34Z" fill-rule="evenodd"></path> </g></svg>
+                Project Outcomes
+            </h2>
+            <ul>
+                <li>Gained hands-on experience with Linux servers and Docker for deployment and management.</li>
+                <li>Acquired foundational knowledge of ERP systems and module configuration, particularly ERPNext.</li>
+                <li>Developed auxiliary business skills, including understanding sales invoices, accounting concepts, and finance workflows.</li>
+            </ul>
+        </section>
+
+        <section class="footer">
+            <p>
+                This project was evaluated by our professors: U Swan Ye (Alfred Thein), Dr. Richard Dare (Rector), Su Lai Lai Naing, Khine Zay Nyunt, and Aung Zin Moe.
+            </p>
+
+            <p>
+                We sincerely thank them for their guidance, support, and valuable feedback throughout the project.
+            </p>
+        </section>
+    </main>
+
+</body>
+</html>
