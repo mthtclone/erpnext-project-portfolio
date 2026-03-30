@@ -253,6 +253,131 @@
         .footer p {
             margin: 1rem;
         }
+
+        /* Small devices: phones */
+        @media (max-width: 640px) {
+            body {
+                margin: 2rem 1rem;
+            }
+
+            main {
+                max-width: 100%;
+            }
+
+            .workflow, .technologies, .challenges, .outcomes {
+                margin: 20px 0;
+                padding: 15px;
+            }
+
+            .workflow h2, .technologies h2, .challenges h2, .outcomes h2 {
+                font-size: 1.3em;
+                gap: 6px;
+            }
+
+            .technologies ul, .challenges ul, .outcomes ul {
+                padding-left: 15px;
+            }
+
+            .roles table {
+                display: block;
+                overflow-x: auto;
+                width: 100%;
+                font-size: 0.85rem;
+            }
+
+            .members {
+                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+                gap: 0.5rem;
+            }
+
+            .member img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .member::after {
+                display: none; 
+            }
+
+            .tooltip-mobile {
+                display: none;
+                position: absolute;
+                bottom: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--dark);
+                color: #fff;
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                border-radius: 6px;
+                white-space: nowrap;
+                z-index: 10;
+            }
+
+            .cta {
+                font-size: 0.85rem;
+                padding: 8px;
+            }
+        }
+
+        /* Medium devices: tablets */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            body {
+                margin: 3rem 2rem;
+            }
+
+            main {
+                max-width: 90%;
+            }
+
+            .roles table {
+                font-size: 0.9rem;
+            }
+
+            .workflow h2, .technologies h2, .challenges h2, .outcomes h2 {
+                font-size: 1.5em;
+            }
+
+            .member::after {
+                display: none; 
+            }
+
+            .tooltip-mobile {
+                display: none;
+                position: absolute;
+                bottom: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--dark);
+                color: #fff;
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                border-radius: 6px;
+                white-space: nowrap;
+                z-index: 10;
+            }
+        }
+
+        img, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .roles table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 400px) {
+            .workflow, .technologies, .challenges, .outcomes {
+                padding: 10px;
+            }
+
+            .roles th, .roles td {
+                padding: 0.5rem 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -350,84 +475,112 @@
                 <a href="https://github.com/mthtclone" target="_blank">
                     <img src="https://avatars.githubusercontent.com/u/157962042?v=4" alt="Min Thiha Tun">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Min Thiha Tun</div>
             </div>
             
             <div class="member" data-name="Zwe Myat Tun">
                 <a href="https://www.instagram.com/king_zan_xxvi?utm_source=qr" target="_blank">
                     <img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/606132035_18118135897573893_5792222495770083754_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby44MjguYzIifQ&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2QHV9MN1HOS0l8SISTw6WxKcvI1QNFuuuD0yYYf7A0FzX2UqXREGfvto5wJuW0oik-A&_nc_ohc=C1sOAkPW2IcQ7kNvwHdB4QR&_nc_gid=TqId_0tZh9ftrUy1_pGAPQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AftxNLV0REObomJf3FRIwrr2O9ijmlu5yLT7q-x582F6wg&oe=69A73445&_nc_sid=8b3546" alt="Zwe Myat Htun">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Zwe Myat Tun</div>
             </div>
             
             <div class="member" data-name="Naung Naung Lin">
                 <a href="https://github.com/Janica-Max" target="_blank">
                     <img src="https://avatars.githubusercontent.com/u/218932649?v=4" alt="Naung Naung Lin">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Naung Naung Lin</div>
             </div>
             
             <div class="member" data-name="Shin Thu Nwe">
                 <a href="mailto:shinthunwe@gmail.com" target="_blank">
                     <img src="https://avatars.githubusercontent.com/u/170590433?v=4" alt="Shin Thu Nwe">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Shin Thu Nwe</div>
             </div>
             
             <div class="member" data-name="Pyae Pyae Min San">
                 <a href="mailto:pyaepyaeminsan@gmail.com" target="_blank">
                     <img src="https://avatars.githubusercontent.com/u/245637052?v=4" alt="Pyae Pyae Min San">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Pyae Pyae Min San</div>
             </div>
 
             <div class="member" data-name="Thit Htun Aung">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Thit Htun Aung">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Thit Htun Aung</div>
             </div>
             
             <div class="member" data-name="Khant Naing Htun">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Khant Naing Htun">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Khant Naing Htun</div>
             </div>
             
             <div class="member" data-name="Lin Lett Htun">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Lin Lett Htun">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Linn Lett Htun</div>
             </div>
             
             <div class="member" data-name="Arkar Moe Myint">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Arkar Moe Myint">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Arkar Moe Myint</div>
             </div>
             
             <div class="member" data-name="Kaung Sithu Htun">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Kaung Sithu Htun">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Kaung Sithu Htun</div>
             </div>
             
             <div class="member" data-name="Thar Linn Htet">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Thar Linn Htet">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Thar Lin Htet</div>
             </div>
             
             <div class="member" data-name="Lwin Min Thein">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Lwin Min Thein">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Lwin Min Thein</div>
             </div>
             
             <div class="member" data-name="Saung Wai Hnin Htet">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Saung Wai Hnin Htet">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Saung Wai Hnin Htet</div>
             </div>
             
             <div class="member" data-name="Shin Min Eain">
                 <a href="#" target="_blank">
                     <img src="user.png" alt="Shin Min Eain">
                 </a>
+
+                <div class="tooltip-mobile" style="display:none;">Shin Min Eain</div>
             </div>
             
         </section>
@@ -455,5 +608,6 @@
         </section>
     </main>
 
+    <script src="script.js"></script>
 </body>
 </html>
